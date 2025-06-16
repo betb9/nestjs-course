@@ -79,4 +79,11 @@ describe('AuthService', () => {
       BadRequestException,
     );
   });
+
+  it('returns a user if correct credentials are provided', async () => {
+    await service.signup('user@user.com', '123');
+
+    const user = await service.signin('user@user.com', '123');
+    expect(user).toBeDefined();
+  });
 });
